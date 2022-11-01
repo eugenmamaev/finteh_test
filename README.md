@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Class name BicycleLockOpener
 
-Things you may want to cover:
+## How to use
 
-* Ruby version
+```
+BicycleLockOpener.unlock <wheels>, <start_combination>, <end_combination>, <exclude_combination>
+```
 
-* System dependencies
+## How to test
 
-* Configuration
+```
+rspec
+```
 
-* Database creation
+## Files location
 
-* Database initialization
+Main class
+ ```
+ app/services/bicycle_lock_opener.rb
+ ```
+Rspec tests
+```
+app/spec/services/bicycle_lock_opener_spec.rb
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+That's it! Enjoy!
