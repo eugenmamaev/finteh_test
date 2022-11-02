@@ -44,8 +44,8 @@ class BicycleLockOpener
       (wheels - 1).downto(0).each do |wheel|
       	test_code = set_test_code wheel
         if @code[wheel] == end_combination[wheel] || @history.include?(test_code)
-	      pop_values if !success && wheel == 0
-    	  break if @code.blank? && is_exit?
+          pop_values if !success && wheel == 0
+          break if @code.blank? && is_exit?
           next
         end
         success = true
@@ -73,6 +73,7 @@ class BicycleLockOpener
 
   def set_digit(digit, wheel)
   	new_digit = digit + @wheel_iteration[wheel]
+    return 0 if new_digit > 9
   	new_digit < 0 ? 9 : new_digit
   end
 
