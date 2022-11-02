@@ -26,17 +26,17 @@ class BicycleLockOpener
   attr_reader :wheels, :start_combinaton, :end_combination, :exclude_combination
 
   def init_values
-  	@values = [@start_combinaton.dup]
+    @values = [@start_combinaton.dup]
   end
 
   def init_wheel_iteration
-  	(0..wheels - 1).each do |wheel|
-	  @wheel_iteration[wheel] = set_iterator(end_combination[wheel], 5)
-	end
+    (0..wheels - 1).each do |wheel|
+      @wheel_iteration[wheel] = set_iterator(end_combination[wheel], 5)
+    end
   end
 
   def calculate_combinations
-  	while @code != end_combination
+    while @code != end_combination
       if @code.blank?
         is_exit? ? break : update_iteration
       end
@@ -44,7 +44,7 @@ class BicycleLockOpener
       (wheels - 1).downto(0).each do |wheel|
       	test_code = set_test_code wheel
         if @code[wheel] == end_combination[wheel] || @history.include?(test_code)
-	      pop_values if !success && wheel == 0
+          pop_values if !success && wheel == 0
     	  break if @code.blank? && is_exit?
           next
         end
@@ -55,7 +55,7 @@ class BicycleLockOpener
   end
 
   def pop_values
-  	@values.pop
+    @values.pop
     @code = @values.last.dup
   end
 
@@ -72,18 +72,18 @@ class BicycleLockOpener
   end
 
   def set_digit(digit, wheel)
-  	new_digit = digit + @wheel_iteration[wheel]
-  	new_digit < 0 ? 9 : new_digit
+    new_digit = digit + @wheel_iteration[wheel]
+    new_digit < 0 ? 9 : new_digit
   end
 
   def is_exit?
-  	@iteration_history.count == 2 ** wheels
+    @iteration_history.count == 2 ** wheels
   end
 
   def update_iteration
-  	init_values
-  	@code = start_combinaton
-  	(wheels - 1).downto(0).each do |wheel|
+    init_values
+    @code = start_combinaton
+    (wheels - 1).downto(0).each do |wheel|
       @wheel_iteration[wheel] = set_iterator(@wheel_iteration[wheel], 0)
       break unless @iteration_history.include? @wheel_iteration
       next
@@ -92,6 +92,6 @@ class BicycleLockOpener
   end
 
   def set_iterator(value, condition)
-  	value > condition ? -1 : 1
+    value > condition ? -1 : 1
   end
 end
