@@ -60,7 +60,7 @@ class BicycleLockOpener
   end
 
   def set_codes(new_code)
-  	@code = new_code
+    @code = new_code
     @values << @code.dup
     @history << @code.dup
   end
